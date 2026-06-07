@@ -1,5 +1,5 @@
 import MetricCard from "@/app/components/MetricCard";
-import { supabase } from "@/app/lib/supabase";
+import { createClientServer } from "@/app/lib/supabase-server";
 import { Users, DollarSign, Ticket, Percent } from "lucide-react";
 
 type Lead = {
@@ -11,6 +11,7 @@ type Lead = {
 };
 
 export default async function DashboardPage() {
+  const supabase = await createClientServer();
   const { data: leads, error } = await supabase.from("leads").select("*");
 
   if (error) {

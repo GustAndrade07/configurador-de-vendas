@@ -1,4 +1,4 @@
-import { supabase } from "@/app/lib/supabase";
+import { createClientServer } from "@/app/lib/supabase-server";
 
 type Lead = {
   id: string;
@@ -17,6 +17,7 @@ const ETAPAS = [
 ];
 
 export default async function PipelinePage() {
+  const supabase = await createClientServer();
   const { data: leads, error } = await supabase.from("leads").select("*");
 
   if (error) {

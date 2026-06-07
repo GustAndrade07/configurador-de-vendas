@@ -1,4 +1,4 @@
-import { supabase } from "@/app/lib/supabase";
+import { createClientServer } from "@/app/lib/supabase-server";
 import { criarLead, deletarLead } from "./actions";
 import Link from "next/link";
 
@@ -20,10 +20,8 @@ const ETAPAS = [
 ];
 
 export default async function LeadsPage() {
-  const { data: leads, error } = await supabase
-    .from("leads")
-    .select("*")
-    .order("created_at", { ascending: false });
+  const supabase = await createClientServer();
+  const { data: leads, error } = await supabase.from("leads").select("*").order("created_at", { ascending: false });
 
   const lista: Lead[] = leads ?? [];
 
