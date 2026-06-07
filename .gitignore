@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# arquivos de IA (uso local, não versionar)
+CLAUDE.md
+AGENTS.md
