@@ -1,4 +1,8 @@
-export default function FinanceiroPage() {
+import { exigirAdmin } from "@/app/lib/auth";
+
+export default async function FinanceiroPage() {
+  await exigirAdmin();
+
   return (
     <div className="p-8">
       <h1 className="text-3xl font-bold">Financeiro</h1>
@@ -6,3 +10,4 @@ export default function FinanceiroPage() {
     </div>
   );
 }
+
