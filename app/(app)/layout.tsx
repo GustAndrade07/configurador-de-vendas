@@ -11,6 +11,9 @@ import {
   DollarSign,
   Settings,
 } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { createClientBrowser } from "@/app/lib/supabase-browser";
+import { LogOut } from "lucide-react";
 
 export default function AppLayout({
   children,
@@ -18,6 +21,15 @@ export default function AppLayout({
   children: React.ReactNode;
 }>) {
   const pathname = usePathname();
+
+const router = useRouter();
+
+  async function handleLogout() {
+    const supabase = createClientBrowser();
+    await supabase.auth.signOut();
+    router.push("/login");
+    router.refresh();
+}
 
 const menu = [
   { label: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
@@ -31,7 +43,7 @@ const menu = [
 
   return (
     <div className="flex min-h-screen">
-      <aside className="w-64 bg-zinc-900 text-white p-6">
+      <aside className="flex w-64 flex-col bg-zinc-900 text-white p-6">
         <h2 className="text-2xl font-bold mb-8">Vanzak</h2>
         <nav className="flex flex-col gap-1">
           {menu.map((item) => {
@@ -54,6 +66,14 @@ const menu = [
             );
           })}
         </nav>
+
+        <button
+          onClick={handleLogout}
+          className="mt-auto flex items-center gap-3 rounded-lg px-4 py-2 text-zinc-300 transition-colors hover:bg-zinc-800"
+        >
+          <LogOut size={20} />
+          Sair
+        </button>
       </aside>
 
       <main className="flex-1 bg-zinc-50">{children}</main>
