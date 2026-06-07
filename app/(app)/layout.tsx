@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import {
   LayoutDashboard,
   KanbanSquare,
+  Calculator,
   Users,
   FileText,
   DollarSign,
@@ -18,14 +19,15 @@ export default function AppLayout({
 }>) {
   const pathname = usePathname();
 
-  const menu = [
-    { label: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
-    { label: "Pipeline", href: "/pipeline", icon: KanbanSquare },
-    { label: "Leads", href: "/leads", icon: Users },
-    { label: "Propostas", href: "/propostas", icon: FileText },
-    { label: "Financeiro", href: "/financeiro", icon: DollarSign },
-    { label: "Configurações", href: "/configuracoes", icon: Settings },
-  ];
+const menu = [
+  { label: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
+  { label: "Pipeline", href: "/pipeline", icon: KanbanSquare },
+  { label: "Configurador", href: "/configurador", icon: Calculator },
+  { label: "Leads", href: "/leads", icon: Users },
+  { label: "Propostas", href: "/propostas", icon: FileText },
+  { label: "Financeiro", href: "/financeiro", icon: DollarSign },
+  { label: "Configurações", href: "/configuracoes", icon: Settings },
+];
 
   return (
     <div className="flex min-h-screen">
