@@ -35,7 +35,7 @@ export default function LoginPage() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-100">
       <div className="w-full max-w-sm rounded-2xl bg-white p-8 shadow-sm">
-        <h1 className="text-2xl font-bold text-zinc-900">Vanzak</h1>
+        <h1 className="text-2xl font-bold text-zinc-900">Configurador de Vendas (NOME EMPRESA)</h1>
         <p className="mt-1 text-sm text-zinc-500">Entre na sua conta</p>
 
         <div className="mt-6 flex flex-col gap-4">

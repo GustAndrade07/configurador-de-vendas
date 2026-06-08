@@ -32,7 +32,7 @@ export default function BotaoPDF({
     doc.setTextColor(255, 255, 255);
     doc.setFontSize(22);
     doc.setFont("helvetica", "bold");
-    doc.text("VANZAK", 20, 19);
+    doc.text("Configuradir de Vendas", 20, 19);
     doc.setFontSize(11);
     doc.setFont("helvetica", "normal");
     doc.text("Proposta Comercial", 150, 19);
@@ -95,7 +95,7 @@ export default function BotaoPDF({
     doc.setTextColor(150, 150, 150);
     doc.setFont("helvetica", "normal");
     doc.text(
-      "Proposta gerada pelo Vanzak Configurator · Válida por 30 dias",
+      "Proposta gerada pelo Configurador de Vendas (NOME EMPRESA) · Válida por 30 dias",
       20,
       285
     );

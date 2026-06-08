@@ -44,7 +44,7 @@ export default function Sidebar({ role, nome }: SidebarProps) {
 
   return (
     <aside className="flex w-64 flex-col bg-zinc-900 text-white p-6">
-      <h2 className="text-2xl font-bold mb-1">Vanzak</h2>
+      <h2 className="text-2xl font-bold mb-1">Configurador de Vendas (NOME EMPRESA)</h2>
       <p className="mb-8 text-xs text-zinc-400">
         {nome} · {role === "admin" ? "Admin" : "Comercial"}
       </p>

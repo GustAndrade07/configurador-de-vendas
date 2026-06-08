@@ -40,7 +40,7 @@ export default async function DashboardPage() {
   return (
     <div className="p-8">
       <h1 className="text-3xl font-bold">Dashboard Comercial</h1>
-      <p className="mt-2 text-zinc-600">Bem-vindo ao Vanzak Configurator.</p>
+      <p className="mt-2 text-zinc-600">Bem-vindo ao Configurador de Vendas (NOME EMPRESA).</p>
 
       <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <MetricCard
