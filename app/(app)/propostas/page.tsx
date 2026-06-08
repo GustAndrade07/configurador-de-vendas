@@ -1,4 +1,5 @@
 import { createClientServer } from "@/app/lib/supabase-server";
+import StatusSelect from "@/app/components/StatusSelect";
 
 type Proposta = {
   id: string;
@@ -70,13 +71,11 @@ export default async function PropostasPage() {
                     {p.itens.length} {p.itens.length === 1 ? "item" : "itens"}
                   </td>
                   <td className="px-4 py-3">
-                    <span
-                      className={`rounded-full px-2 py-1 text-xs font-medium ${corStatus(
-                        p.status
-                      )}`}
-                    >
-                      {p.status}
-                    </span>
+                    <StatusSelect
+                      id={p.id}
+                      status={p.status}
+                      cor={corStatus(p.status)}
+                    />
                   </td>
                 </tr>
               ))
