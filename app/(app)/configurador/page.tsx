@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { salvarProposta } from "./actions";
 
 const PRECO_BASE = 4000;
 
@@ -24,9 +25,8 @@ const MARGEM = 0.4;
 
 export default function ConfiguradorPage() {
   const [selecionados, setSelecionados] = useState<string[]>([]);
-  const [complexidade, setComplexidade] = useState<"Template" | "Custom">(
-    "Template"
-  );
+  const [complexidade, setComplexidade] = useState<"Template" | "Custom">("Template");
+  const [cliente, setCliente] = useState("");
 
   function toggleItem(id: string) {
     setSelecionados((atual) =>
@@ -159,6 +159,36 @@ export default function ConfiguradorPage() {
                 <span>{formatar(margem)}</span>
               </div>
             </div>
+
+            <form action={salvarProposta} className="mt-6 flex flex-col gap-3">
+              <input
+                type="text"
+                value={cliente}
+                onChange={(e) => setCliente(e.target.value)}
+                required
+                placeholder="Nome do cliente"
+                className="rounded-lg border border-zinc-300 px-3 py-2 text-sm"
+              />
+
+              {/* Campos escondidos com os valores calculados */}
+              <input type="hidden" name="cliente" value={cliente} />
+              <input type="hidden" name="precoFinal" value={precoFinal} />
+              <input type="hidden" name="margem" value={margem} />
+              <input type="hidden" name="complexidade" value={complexidade} />
+              <input
+                type="hidden"
+                name="itens"
+                value={JSON.stringify(selecionados)}
+              />
+
+              <button
+                type="submit"
+                disabled={!cliente}
+                className="rounded-lg bg-indigo-600 px-4 py-2 font-medium text-white hover:bg-indigo-700 disabled:opacity-50"
+              >
+                Salvar como proposta
+              </button>
+            </form>
           </div>
         </div>
       </div>
