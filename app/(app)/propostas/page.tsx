@@ -1,5 +1,6 @@
 import { createClientServer } from "@/app/lib/supabase-server";
 import StatusSelect from "@/app/components/StatusSelect";
+import BotaoPDF from "@/app/components/BotaoPDF";
 
 type Proposta = {
   id: string;
@@ -45,12 +46,13 @@ export default async function PropostasPage() {
               <th className="px-4 py-3 font-medium">Complexidade</th>
               <th className="px-4 py-3 font-medium">Itens</th>
               <th className="px-4 py-3 font-medium">Status</th>
+              <th className="px-4 py-3 font-medium">Ações</th>
             </tr>
           </thead>
           <tbody>
             {lista.length === 0 ? (
               <tr>
-                <td colSpan={6} className="px-4 py-6 text-center text-zinc-400">
+                <td colSpan={7} className="px-4 py-6 text-center text-zinc-400">
                   {error ? `Erro: ${error.message}` : "Nenhuma proposta gerada."}
                 </td>
               </tr>
@@ -75,6 +77,17 @@ export default async function PropostasPage() {
                       id={p.id}
                       status={p.status}
                       cor={corStatus(p.status)}
+                    />
+                  </td>
+                  <td className="px-4 py-3">
+                    <BotaoPDF
+                      cliente={p.cliente}
+                      precoFinal={p.preco_final}
+                      margem={p.margem}
+                      complexidade={p.complexidade}
+                      itens={p.itens}
+                      status={p.status}
+                      data={new Date(p.created_at).toLocaleDateString("pt-BR")}
                     />
                   </td>
                 </tr>
